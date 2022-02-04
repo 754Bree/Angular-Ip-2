@@ -1,0 +1,67 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdey">
+<div class="row">
+  <div class="profile-nav col-md-3">
+      <div class="panel">
+          <div class="user-heading round">
+              <a href="#">
+                  <img [src]='user.avatar_url' alt="">
+              </a>
+              <h1>{{user.login}}</h1>
+          </div>
+
+      </div>
+  </div>
+  <div class="profile-info col-md-9">
+      <div class="panel">
+            <div class="md-form my-0">
+                <label for="">Search Username</label>
+                <input class="form-control mr-sm-2" type="text" placeholder="github username" aria-label="Search"[(ngModel)]='username' (keyup)="findUser()">
+              </div>
+      </div>
+      <div class="panel card mt-3">
+          <div class="bio-graph-heading">
+              
+          </div>
+          <div class="panel-body bio-graph-info m-3">
+              <h1>Biograph</h1>
+              <div class="row">
+                  <div class="bio-row">
+                      <p><span>Username </span>: {{user.login}}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Country </span>: {{user.location}}</p>
+                  </div>
+                  <div class="bio-row">
+                    <p><span>Created </span>: {{user.created_at | count}}</p>
+                </div>
+                  <div class="bio-row">
+                      <p><span>Email </span>: {{user.email}}</p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Bio </span>: {{user.bio}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div>
+          <div class="row">
+              <div class="">
+              <div class="col" *ngIf="user.public_repos">
+                  <div class="card m-2" *ngFor="let repo of userRepos">
+                      <div class="card-body">
+                          <div class="bio-chart">
+                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2" value="{{repo.id}}" data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224, 107, 125); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                          </div>
+                          <h3>{{repo.name}}</h3>
+                            <p>{{repo.description}}</p>
+                            <h4><a href="{{repo.html_url}}" target="_blank">View more</a></h4>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
